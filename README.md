@@ -9,7 +9,7 @@ A simple console-based SSH connection menu, fed by an INI style configuration fi
 
 Just execute it. Optionally provide a configuration file as an argument.
 
-# Dependencies
+## Dependencies
 
 cursesmenu (pip install curses-menu)
 
