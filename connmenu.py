@@ -21,6 +21,9 @@ from pprint import pprint
 from cursesmenu import *
 from cursesmenu.items import *
 
+# title settings
+title = True # set terminal title to $hostLabel ($username)
+
 exit_string = 'ConnMenu exiting...'
 
 config_file = os.path.expanduser('~/connmenu.conf')
@@ -64,11 +67,14 @@ print 'serverconf', serverconf
 
 
 host = serverconf[0]
-username, password = serverconf[1], serverconf[2]
+username, password = serverconf[1].strip(), serverconf[2]
 
 print "Connecting to %s..." % host
-command = "ssh '%s' -l %s" % ( host.strip(), username.strip() )
+command = "ssh '%s' -l %s" % ( host, username)
 print command
+
+if title:
+    subprocess.call("xtitle \"%s (%s)\"" % (host.split('.')[0].strip(), username), shell=True)
 
 # Launch interactive SSH
 subprocess.call(command, shell=True)
