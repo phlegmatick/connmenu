@@ -28,6 +28,11 @@ exit_string = 'ConnMenu exiting...'
 
 config_file = os.path.expanduser('~/connmenu.conf')
 
+if not os.path.isfile(config_file):
+    print "Configuration file not found!"
+    print exit_string
+    sys.exit()
+
 config_file = sys.argv[1] if (len(sys.argv) > 1) else config_file
 print config_file
 hosts = ConfigParser.ConfigParser()
