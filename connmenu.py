@@ -46,7 +46,7 @@ categories = hosts.sections()
 category_selection = SelectionMenu.get_selection( categories , 'Connection Categories')
 
 try:
-	category_name = categories[category_selection]
+    category_name = categories[category_selection]
 except IndexError:
     print exit_string
     sys.exit()
