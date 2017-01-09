@@ -8,12 +8,12 @@ Usage: Just execute it. Optionally provide a configuration file as an argument.
 Dependencies: cursesmenu (pip install curses-menu)
 
 Configuration example:
-	;This is a comment
-	[Dev]
-	devbox:192.168.0.5,username,passw0rd
-	[Production]
-	prod01:10.10.10.11,user,pass
-	prod02:10.10.10.12,user,hunter2
+    ;This is a comment
+    [Dev]
+    devbox:192.168.0.5,username,passw0rd
+    [Production]
+    prod01:10.10.10.11,user,pass
+    prod02:10.10.10.12,user,hunter2
 """
 import ConfigParser, sys, subprocess
 import os
@@ -53,7 +53,7 @@ try:
 except IndexError:
     print exit_string
     sys.exit()
-	
+    
 servers = hosts.items(category_name)
 
 pprint(servers)
@@ -79,19 +79,19 @@ username, password = serverconf[1].strip(), serverconf[2]
 
 connMenu = True
 while connMenu:
-	
-	print "Connecting to %s..." % host
-	command = "ssh '%s' -l %s" % ( host, username)
-	print command
-
-	if title:
-		subprocess.call("xtitle \"%s (%s)\"" % (host.split('.')[0].strip(), username), shell=True)
-
-	# Launch interactive SSH
-	subprocess.call(command, shell=True)
-
-	# Exit logic
-	exitOption = raw_input('\nSSH exited. [R]econnect or any other key to exit: ')
-
-	if exitOption.strip().upper() != 'R':
-		sys.exit()
+    
+    print "Connecting to %s..." % host
+    command = "ssh '%s' -l %s" % ( host, username)
+    print command
+    
+    if title:
+        subprocess.call("xtitle \"%s (%s)\"" % (host.split('.')[0].strip(), username), shell=True)
+    
+    # Launch interactive SSH
+    subprocess.call(command, shell=True)
+    
+    # Exit logic
+    exitOption = raw_input('\nSSH exited. [R]econnect or any other key to exit: ')
+    
+    if exitOption.strip().upper() != 'R':
+        sys.exit()
